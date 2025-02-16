@@ -1,4 +1,5 @@
 resource "aws_security_group" "my-sg-for-ssh" {
+  vpc_id = aws_vpc.my-vpc.id
   name        = var.ssh.name
   description = var.ssh.description
 

@@ -26,7 +26,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.my-vpc.id
 
   tags = {
-    Name = "ta-public-route-table"
+    Name = "ta-private-route-table"
   }
 
   depends_on = [ aws_vpc.my-vpc ]

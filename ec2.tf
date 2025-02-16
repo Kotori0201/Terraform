@@ -11,7 +11,13 @@ resource "aws_instance" "first-instance" {
   vpc_security_group_ids = [aws_security_group.my-sg-for-ssh.id]
   key_name = aws_key_pair.my_key.key_name
 
+  user_data = <<-EOF
+              #!/bin/bash
+              sed -i 's/^#Port 22/Port 8080/' /etc/ssh/sshd_config
+              sed -i 's/^Port 22/Port 8080/' /etc/ssh/sshd_config
+              systemctl restart sshd
+              EOF
   tags = {
-    Name = "tuananh-bastion"
+    Name = "tuananh-bastion-1"
   }
 }
